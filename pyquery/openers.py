@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# cython: language_level=3
+
 from urllib.request import urlopen
 from urllib.parse import urlencode
 from urllib.error import HTTPError

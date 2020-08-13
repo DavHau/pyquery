@@ -6,6 +6,14 @@
 
 from setuptools import setup, find_packages
 import os
+from setuptools.extension import Extension
+try:
+    from Cython.Build import cythonize
+except ImportError:
+     def cythonize(*args, **kwargs):
+         from Cython.Build import cythonize
+         return cythonize(*args, **kwargs)
+
 
 
 install_requires = [
@@ -54,6 +62,7 @@ setup(name='pyquery',
           "Programming Language :: Python :: 3.6",
           "Programming Language :: Python :: 3.7",
       ],
+      ext_modules = cythonize("pyquery/*.py"),
       keywords='jquery html xml scraping',
       author='Olivier Lauzanne',
       author_email='olauzanne@gmail.com',
@@ -64,6 +73,9 @@ setup(name='pyquery',
       packages=find_packages(exclude=[
           'bootstrap', 'bootstrap-py3k', 'docs', 'tests', 'README_fixt'
       ]),
+      setup_requires = [
+          'cython'
+      ],
       include_package_data=True,
       zip_safe=False,
       install_requires=install_requires,

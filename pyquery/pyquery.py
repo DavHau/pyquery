@@ -1,6 +1,9 @@
 # Copyright (C) 2008 - Olivier Lauzanne <olauzanne@gmail.com>
 #
 # Distributed under the BSD license, see LICENSE.txt
+
+# cython: language_level=2
+
 from .cssselectpatch import JQueryTranslator
 from collections import OrderedDict
 from urllib.parse import urlencode
